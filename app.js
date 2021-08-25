@@ -1,10 +1,11 @@
+// Nav HTMLs
 const navBarHtml = `
 <nav>
   <div class="nav-center">
 
     <div class="nav-header">
-      <iiiiiiimg src="./logo.svg" class="logo" alt="logo">
-      <button class="nav-toggle">
+      <img src="./logo.svg" class="logo" alt="logo">
+      <button class="navbar-toggle">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -104,14 +105,16 @@ const sideBarHtml = `
 
 </aside>`
 
-// secret code variabel
+// Switch nav
 const pressed = [];
-const secretCode = 'changenav';
+const secretCode = 'nav';
 const navWraper = document.querySelector('.nav-wraper');
+let links = document.querySelector('.links');
 
 window.addEventListener('DOMContentLoaded', function () {
   navWraper.innerHTML = navBarHtml;
   navWraper.classList.add('nav-bar-on');
+  links = document.querySelector('.links');
 });
 
 window.addEventListener('keyup', activateSecret);
@@ -129,40 +132,36 @@ function switchBar() {
   navWraper.classList.toggle('nav-bar-on');
   navWraper.classList.toggle('side-bar-on');
   if (navWraper.classList.value.includes('nav-bar-on')) {
+    // Switch html
     navWraper.innerHTML = navBarHtml;
-    // navBar functionality load via function
+    links = document.querySelector('.links');
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    navbarToggle.addEventListener('click', toggleNavbar);
   }
   else if (navWraper.classList.value.includes('side-bar-on')) {
+    // Switch html
     navWraper.innerHTML = sideBarHtml;
-    // sidebar functionality load via function
+    //
+    const toggleBtn = document.querySelector('.sidebar-toggle');
+    const closeBtn = document.querySelector('.sidebar-close-btn');
+    toggleBtn.addEventListener('click', toggleFunc);
+    closeBtn.addEventListener('click', closeSidebar);
   }
 };
 
-// nav bar elements
-const navBar = document.querySelector('.nav-center');
-// console.log(navBar);
+// Sidebar
+function toggleFunc() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.classList.toggle('show-sidebar');
+}
 
-// sidebar elements
-const sidebar = document.querySelector('.sb-sidebar');
-const toggleBtn = document.querySelector('.sb-sidebar-toggle');
-const closeBtn = document.querySelector('.sb-close-btn');
+function closeSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.classList.remove('show-sidebar');
+}
 
-
-function toggleMenu() {
-  const links = document.querySelector('.links');
+// Navbar
+function toggleNavbar() {
   links.classList.toggle('show-links');
 };
 
-
-// sidebar
-
-function toggleFunc() {
-  sidebar.classList.toggle('sd-show-sidebar');
-}
-
-function closeFunc() {
-  sidebar.classList.remove('sd-show-sidebar');
-}
-
-toggleBtn.addEventListener('click', toggleFunc);
-closeBtn.addEventListener('click', closeFunc);
