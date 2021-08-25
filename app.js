@@ -4,7 +4,7 @@ const navBarHtml = `
   <div class="nav-center">
 
     <div class="nav-header">
-      <img src="./logo.svg" class="logo" alt="logo">
+      <img src="./images/avatar.jpg" class="avatar" alt="avatar">
       <button class="navbar-toggle">
         <i class="fas fa-bars"></i>
       </button>
@@ -59,7 +59,7 @@ const sideBarHtml = `
 <aside class="sidebar">
 
   <div class="sidebar-header">
-    <img src="./logo.svg" class="sidebar-logo" alt="logo">
+      <img src="./images/avatar.jpg" class="avatar" alt="avatar">
     <button class="sidebar-close-btn">
       <i class="fas fa-times"></i>
     </button>
@@ -109,12 +109,14 @@ const sideBarHtml = `
 const pressed = [];
 const secretCode = 'nav';
 const navWraper = document.querySelector('.nav-wraper');
-let links = document.querySelector('.links');
+let links = document.querySelector('body');
 
 window.addEventListener('DOMContentLoaded', function () {
   navWraper.innerHTML = navBarHtml;
   navWraper.classList.add('nav-bar-on');
   links = document.querySelector('.links');
+  const navbarToggle = document.querySelector('.navbar-toggle');
+  navbarToggle.addEventListener('click', toggleNavbar);
 });
 
 window.addEventListener('keyup', activateSecret);
@@ -126,20 +128,21 @@ function activateSecret(e) {
     switchBar();
   }
 };
-// comment test
+
 function switchBar() {
   console.log("in the switchBar");
   navWraper.classList.toggle('nav-bar-on');
   navWraper.classList.toggle('side-bar-on');
+
   if (navWraper.classList.value.includes('nav-bar-on')) {
-    // Switch html
+    // Switch html NAVBAR
     navWraper.innerHTML = navBarHtml;
     links = document.querySelector('.links');
-    const navbarToggle = document.querySelector('.navbar-toggle');
+    navbarToggle = document.querySelector('.navbar-toggle');
     navbarToggle.addEventListener('click', toggleNavbar);
   }
   else if (navWraper.classList.value.includes('side-bar-on')) {
-    // Switch html
+    // Switch html SIDEBAR
     navWraper.innerHTML = sideBarHtml;
     //
     const toggleBtn = document.querySelector('.sidebar-toggle');

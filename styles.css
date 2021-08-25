@@ -133,6 +133,11 @@ p {
   margin: 0 auto;
   max-width: 1170px;
 }
+.avatar {
+  height: 60px;
+  border-radius: 50%;
+  border: solid var(--clr-grey-5) 2px;
+}
 @media screen and (min-width: 992px) {
   .section-center {
     width: 95vw;
