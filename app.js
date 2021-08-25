@@ -126,7 +126,7 @@ function activateSecret(e) {
     switchBar();
   }
 };
-
+// comment test
 function switchBar() {
   console.log("in the switchBar");
   navWraper.classList.toggle('nav-bar-on');
