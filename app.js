@@ -1,3 +1,5 @@
+import './modal.js';
+
 // Nav HTMLs
 const navBarHtml = `
 <nav>
@@ -22,6 +24,9 @@ const navBarHtml = `
       </li>
       <li>
         <a href="contact.html">contact</a>
+      </li>
+      <li>
+        <a href="" target="self">secret</a>
       </li>
     </ul>
 
@@ -167,4 +172,6 @@ function closeSidebar() {
 function toggleNavbar() {
   links.classList.toggle('show-links');
 };
+
+// when user clicks modal-btn add .open-modal to modal-overlay
 
